@@ -1,4 +1,4 @@
 {
-  name: "multiplayer-server",
-  version: "0.0.1"
+  "name": "multiplayer-server",
+  "version": "0.0.1"
 }
