@@ -16,11 +16,6 @@ server.listen(process.env.PORT || 8080, function() {
  
 wsServer = new WebSocketServer({
     httpServer: server,
-    // You should not use autoAcceptConnections for production
-    // applications, as it defeats all standard cross-origin protection
-    // facilities built into the protocol and the browser.  You should
-    // *always* verify the connection's origin and decide whether or not
-    // to accept it.
     autoAcceptConnections: false
 });
  
@@ -36,7 +31,7 @@ wsServer.on('request', function(request) {
       console.log((new Date()) + ' Connection from origin ' + request.origin + ' rejected.');
       return;
     }
-    
+    try {
     var connection = request.accept('echo-protocol', request.origin);
     console.log((new Date()) + ' Connection accepted.');
     var verifyCode = "VERIFY:" + Math.floor(Math.random() * 2147483647);
@@ -46,8 +41,9 @@ wsServer.on('request', function(request) {
             console.log('Received Message: ' + message.utf8Data);
             if(message.utf8Data = verifyCode) {
               connection.sendUTF(key.encrypt("Verified connection!", 'base64'));
+            } else {
+              connection.sendUTF("Connection unverifiable.");
             }
-            connection.sendUTF("Connection unverifiable.");
         }
         else if (message.type === 'binary') {
             console.log('Received Binary Message of ' + message.binaryData.length + ' bytes');
@@ -57,4 +53,7 @@ wsServer.on('request', function(request) {
     connection.on('close', function(reasonCode, description) {
         console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
     });
+    } catch(e) {
+      console.error(e);
+    }
 });
