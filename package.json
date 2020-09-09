@@ -2,7 +2,8 @@
   "name": "multiplayer-server",
   "version": "0.0.1",
   "dependencies": {
-    "websocket": "latest"
+    "websocket": "latest",
+    "node-rsa": "latest"
   },
   "scripts": {
     "start": "node index.js"
