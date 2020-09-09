@@ -3,7 +3,7 @@ var WebSocketServer = require('websocket').server;
 var http = require('http');
 var NodeRSA = require('node-rsa');
 
-const key = new NodeRSA("-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAor8nQt6VVNClBUQmaNeZNeUCcfZ4IeLV1sUACZ5/fcfrgycp9ew3KtWOiHXqlFSGQp3qgMi5bhUDaGn89WqIDTfdgrTB1mIgkncWvx5H1J7ODYf7QzFalMMjdpaSbDHsDACvOAWFoBtruOR6hOH337WaNLGNZd6kbnG4wGK86PJqE0pVaYo74WzgVe+8YXM/NTCgTQy0TplzMTCkBFM9wyAU7bONuMZoggp65nvYOfvTqk3YtxUzgbIg4BfORnTwzC2UraXQTlbFzJjhsguAQ0OG2iNA+ZHjzI2uSepunlyP8woxKDliyfiqsDW24ynIjdooLJV5KqJhDHHsQZOuWQIDAQAB -----END PUBLIC KEY-----", "pkcs8-public");
+const key = new NodeRSA("-----BEGIN RSA PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAor8nQt6VVNClBUQmaNeZNeUCcfZ4IeLV1sUACZ5/fcfrgycp9ew3KtWOiHXqlFSGQp3qgMi5bhUDaGn89WqIDTfdgrTB1mIgkncWvx5H1J7ODYf7QzFalMMjdpaSbDHsDACvOAWFoBtruOR6hOH337WaNLGNZd6kbnG4wGK86PJqE0pVaYo74WzgVe+8YXM/NTCgTQy0TplzMTCkBFM9wyAU7bONuMZoggp65nvYOfvTqk3YtxUzgbIg4BfORnTwzC2UraXQTlbFzJjhsguAQ0OG2iNA+ZHjzI2uSepunlyP8woxKDliyfiqsDW24ynIjdooLJV5KqJhDHHsQZOuWQIDAQAB -----END RSA PUBLIC KEY-----");
  
 var server = http.createServer(function(request, response) {
     console.log((new Date()) + ' Received request for ' + request.url);
