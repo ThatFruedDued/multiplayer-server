@@ -40,12 +40,12 @@ wsServer.on('request', function(request) {
     var connection = request.accept('echo-protocol', request.origin);
     console.log((new Date()) + ' Connection accepted.');
     var verifyCode = "VERIFY:" + Math.floor(Math.random() * 2147483647);
-    connection.sendUTF(key.encrypt(verifyCode, 'base64'));
+    connection.sendUTF(key.encrypt(verifyCode, 'utf8'));
     connection.on('message', function(message) {
         if (message.type === 'utf8') {
             console.log('Received Message: ' + message.utf8Data);
             if(message.utf8Data = verifyCode) {
-              connection.sendUTF(key.encrypt("Verified connection!", 'base64'));
+              connection.sendUTF(key.encrypt("Verified connection!", 'utf8'));
             }
             connection.sendUTF("Connection unverifiable.");
         }
