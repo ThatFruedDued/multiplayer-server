@@ -55,7 +55,7 @@ wsServer.on('request', function(request) {
       console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
     });
     function gnvc(){
-      verifyCode = "VERIFY:" + Math.floor(Math.random() * 2147483647);
+      verifyCode = Math.floor(Math.random() * 2147483647);
     }
   } catch(e) {
     wsServer.close();
