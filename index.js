@@ -47,7 +47,7 @@ wsServer.on('request', function(request) {
     }), 'base64'));
     connection.on('message', function(encmessage) {
       let aes = new aesjs.ModeOfOperation.cbc(key, iv);
-      let message = aes.decrypt(Buffer.from(encmessage.utf8Data, 'base64').buffer);
+      let message = aes.decrypt(Buffer.from(encmessage.utf8Data, 'base64'));
       if (encmessage.type === 'utf8') {
         try {
           console.log('Received Message: ' + message);
