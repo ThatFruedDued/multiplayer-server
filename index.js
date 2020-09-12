@@ -57,9 +57,9 @@ wsServer.on('request', function(request) {
             console.log(JSON.parse(message).POS);
             aes = new aesjs.ModeOfOperation.cbc(key, iv);
             gnvc();
-            connection.sendUTF(Buffer.from(aes.encrypt(JSON.stringify({
+            connection.sendUTF(Buffer.from(aes.encrypt(jsaes.utils.utf8.toBytes(JSON.stringify({
               "VERIFY": verifyCode
-            }), iv)).toString("base64"));
+            })), iv)).toString("base64"));
           } else {
             connection.sendUTF("Connection unverifiable.");
           }
