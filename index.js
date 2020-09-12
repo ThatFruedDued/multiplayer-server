@@ -62,7 +62,7 @@ wsServer.on('request', function(request) {
             connection.sendUTF("Connection unverifiable.");
           }
         } catch (err) {
-          console.error("parsing error");
+          console.error(err);
         }
       }
     });
