@@ -57,9 +57,9 @@ wsServer.on('request', function(request) {
             console.log(JSON.parse(message).POS);
             aes = new aesjs.ModeOfOperation.cbc(key, iv);
             gnvc();
-            connection.sendUTF(Buffer.from(aes.encrypt(aesjs.utils.utf8.toBytes(JSON.stringify({
+            connection.sendUTF(Buffer.from(aes.encrypt(aesjs.utils.utf8.toBytes(blockify(JSON.stringify({
               "VERIFY": verifyCode
-            })), iv)).toString("base64"));
+            }))), iv)).toString("base64"));
           } else {
             connection.sendUTF("Connection unverifiable.");
           }
@@ -79,3 +79,12 @@ wsServer.on('request', function(request) {
     console.error(e);
   }
 });
+
+function blockify(string){
+  let amt = 0 - ((string.length % 16) - 16);
+  let result = string;
+  for(let i = 0; i < amt; i++){
+    string += " ";
+  }
+  return result;
+}
