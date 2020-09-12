@@ -59,7 +59,7 @@ wsServer.on('request', function(request) {
             gnvc();
             connection.sendUTF(Buffer.from(aes.encrypt(JSON.stringify({
               "VERIFY": verifyCode
-            }))).toString("base64"));
+            }), iv)).toString("base64"));
           } else {
             connection.sendUTF("Connection unverifiable.");
           }
