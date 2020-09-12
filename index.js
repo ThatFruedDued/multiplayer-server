@@ -84,7 +84,7 @@ function blockify(string){
   let amt = 0 - ((string.length % 16) - 16);
   let result = string;
   for(let i = 0; i < amt; i++){
-    string += " ";
+    result += " ";
   }
   return result;
 }
