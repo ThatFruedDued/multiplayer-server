@@ -43,7 +43,7 @@ wsServer.on('request', function(request) {
     connection.sendUTF(rsakey.encrypt(JSON.stringify({
       "VERIFY": verifyCode,
       "KEY": key.toString("base64"),
-      "IV": iv.toString("base64");
+      "IV": iv.toString("base64")
     }), 'base64'));
     connection.on('message', function(encmessage) {
       let aes = new aesjs.modeOfOperation.cbc(key, iv);
