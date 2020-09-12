@@ -46,14 +46,14 @@ wsServer.on('request', function(request) {
       "IV": iv.toString("base64")
     }), 'base64'));
     connection.on('message', function(encmessage) {
-      let aes = new aesjs.modeOfOperation.cbc(key, iv);
+      let aes = new aesjs.ModeOfOperation.cbc(key, iv);
       let message = aes.decrypt(Buffer.from(encmessage.utf8Data, 'base64').toString('utf8').buffer);
       if (encmessage.type === 'utf8') {
         try {
           console.log('Received Message: ' + message);
           if(JSON.parse(message).VERIFY = verifyCode) {
             console.log(JSON.parse(message).POS);
-            aes = new aesjs.modeOfOperation.cbc(key, iv);
+            aes = new aesjs.ModeOfOperation.cbc(key, iv);
             gnvc();
             connection.sendUTF(aes.encrypt(JSON.stringify({
               "VERIFY": verifyCode
