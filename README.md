@@ -1,1 +1,3 @@
-Nothing here yet...
+# Node.js Multiplayer Server
+## Usage
+This repository must be used in Node.js. First, replace the rsakey variable with your RSA public key. This secures the connection, preventing cheating easily. Then, have your client to connect to a Berkeley socket (using an environment such as [websocket-sharp](https://github.com/sta/websocket-sharp)) with the url of "ws://server.example.com" (of course, using your actual server URL). It will then recieve a base64 RSA encrypted string, which your client needs to decrypt using the corresponding private key. This will result in stringified JSON, which you can parse. Then, you need to store the AES key provided on you client (this will be sent as "AES" in the JSON, base64 encoded), and temporarily store the 
